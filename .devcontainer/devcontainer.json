@@ -1,0 +1,25 @@
+{
+  "name": "LaTeX (Beamer) Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "latex-workshop.latex.autoBuild.run": "never",
+        "latex-workshop.linting.enabled": false
+      },
+      "extensions": [
+        "james-yu.latex-workshop"
+      ]
+    }
+  },
+  "postCreateCommand": "pdflatex --version || true && latexmk --version || true",
+  "remoteUser": "vscode",
+  "forwardPorts": [],
+  "shutdownAction": "none"
+}

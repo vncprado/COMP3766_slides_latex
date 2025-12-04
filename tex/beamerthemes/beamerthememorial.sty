@@ -1,0 +1,51 @@
+% Memorial University Beamer Theme
+% Combines custom colors, fonts, and layout
+
+\mode<presentation>
+
+% Define Memorial University official colors
+\definecolor{MemorialRed}{RGB}{134, 38, 51}      % PMS 202 C0 M100 Y61 K43
+\definecolor{MemorialGrey}{RGB}{99, 102, 106}    % PMS Cool Grey 10 C0 M2 Y0 K60
+\definecolor{MemorialWhite}{RGB}{255, 255, 255} % White C0 M0 Y0 K0
+\definecolor{MemorialBlack}{RGB}{35, 31, 32}    % Black C30 M20 Y20 K100
+
+% Set color scheme - using Memorial University official palette
+\setbeamercolor{palette primary}{bg=MemorialRed, fg=MemorialWhite}
+\setbeamercolor{palette secondary}{bg=MemorialGrey, fg=MemorialWhite}
+\setbeamercolor{palette tertiary}{bg=MemorialBlack, fg=MemorialWhite}
+\setbeamercolor{palette quaternary}{bg=MemorialGrey, fg=MemorialRed}
+\setbeamercolor{structure}{fg=MemorialRed}
+\setbeamercolor{title}{fg=MemorialWhite, bg=MemorialRed}
+\setbeamercolor{subtitle}{fg=MemorialGrey, bg=MemorialWhite}
+\setbeamercolor{frametitle}{fg=MemorialWhite, bg=MemorialRed}
+\setbeamercolor{framesubtitle}{fg=MemorialRed}
+
+% Set fonts
+\usefonttheme{structurebold}
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Remove header strip
+\setbeamertemplate{headline}{}
+
+% Add logo in top-right corner via frametitle
+\addtobeamertemplate{frametitle}{}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north east, inner sep=0.5cm] at (current page.north east) {%
+      \includegraphics[height=0.5cm]{memorial-logo}
+    };
+  \end{tikzpicture}
+}
+
+% Customize footer with only email - thinner
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=1\paperwidth, ht=0.4cm, dp=0.15cm, leftskip=1em, rightskip=1em]{palette secondary}
+    \insertshortauthor
+    \hfill\insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}
+}
+
+\mode<all>
