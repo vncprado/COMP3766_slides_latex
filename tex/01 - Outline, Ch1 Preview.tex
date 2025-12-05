@@ -20,20 +20,24 @@
 \begin{document}
 
 \begin{frame}
+
   \titlepage
+
 \end{frame}
 
 \begin{frame}{Outline}
-  \tableofcontents
-  % \begin{itemize}
-  %   \item Introduction
-  %   \item Example slide
-  %   \item Conclusion
-  % \end{itemize}
+
+  \begin{columns}[T]
+        \begin{column}{\textwidth}
+          \tableofcontents
+        \end{column}
+  \end{columns}
+
 \end{frame}
 
 \section{Course overview}
 \begin{frame}{Course objectives}
+
   \begin{itemize}
     \item The primary objective: introduction to the mathematical formulation and practical aspects of robotic manipulators.
     \item It will present kinematics, dynamics, control, and programming vital to effectively using/designing  robotic arms.
@@ -48,11 +52,13 @@
     \end{itemize}
     \item A complete yet straightforward robotic manipulator model will be developed to demonstrate these concepts using high-level languages and frameworks.
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Course details}
+
   \begin{itemize}
-    \item Instructor: Dr. Vinicius Prado da Fonseca
+    \item Instructor: Dr.\ Vinicius Prado da Fonseca
     \begin{itemize}
       \item E-mail: \textbf{vpradodafons@online.mun.ca (Brightspace email) include [COMP3766] in the subject line};
         \begin{itemize}
@@ -68,9 +74,11 @@
       \item Lectures are recorded on Online Rooms (Bongo).
     \end{itemize}
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Course details (cont.)}
+
   \begin{itemize}
     \item Labs
     \begin{itemize}
@@ -86,9 +94,11 @@
         \item Online notes and slides will also be available.
       \end{itemize}
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Evaluation}
+
   \begin{itemize}
     \item The final grade in the course will be determined as follows:
     \begin{itemize}
@@ -102,17 +112,21 @@
         \item Evaluation, lecture dates, lab schedule, assignment deadlines and textbook units.
       \end{itemize}
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Assignments}
+
   \begin{itemize}
     \item Assignments (\hl{5 or 6}) may have written and/or programming portions
     \item Submit written portions by hand in a scanned document or annotated PDF.
     \item Programming portions will be mostly in Python. Use the provided files as a template for your code.  
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Labs}
+
   \begin{itemize}
     \item Labs (4) will be \textbf{IN PERSON}
     \begin{itemize}
@@ -133,59 +147,246 @@
       \item Lab quiz.
     \end{itemize}
   \end{itemize}  
+
 \end{frame}
 
 \begin{frame}{Final Project}
+
   \begin{itemize}
     \item Repository (\hl{INCLUDE REPO LINK HERE})
     \item Final weeks starting after second quiz.
     \item Deadline last day of classes.
   \end{itemize}
+
 \end{frame}
 
 \section{Ch1 Preview}
 \begin{frame}
+
   Robotics is a relatively young discipline with highly ambitious goals, the ultimate one being the creation of machines that can behave and think like humans.  
 
   \begin{figure}[h]
       \centering
-      % TODO: UPDATE THIS LINK TO THE REPO GIFS
-      \href{https://www.google.com}{
+      \href{https://github.com/vncprado/COMP3766_slides_latex/tree/main/tex/imgs/01}{
           \includegraphics[width=0.5\textwidth]{imgs/01/atlas-yellow.jpg}
       }
-      \caption{Boston Dynamics Atlas Robot.}
-      \label{fig:atlas-clickable}
+      \caption{Boston Dynamics Atlas Robot.\label{fig:atlas-clickable}}
   \end{figure}
 
-%   \begin{figure}[htb!]
-%     \centering
-%     % Define a fixed width for all three subfigures.
-%     % In this case, each image is slightly less than 1/3 of the text width 
-%     % to account for spacing between them.
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{imgs/01/spot.gif} 
-%         \caption{Spot robot.}
-%         \label{fig:gif1}
-%     \end{subfigure}% % <--- Crucial to prevent extra space (like a newline)
-%     \hfill% % <--- Adds flexible horizontal space between subfigures
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{imgs/01/atlas_fail.gif}
-%         \caption{Atlas falling while jumping.}
-%         \label{fig:gif2}
-%     \end{subfigure}%
-%     \hfill%
-%     \begin{subfigure}[b]{0.3\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{imgs/01/atlas_nofail.gif}
-%         \caption{Atlas jumping successfully.}
-%         \label{fig:gif3}
-%     \end{subfigure}
+\end{frame}
+
+\begin{frame}{Ch1 Preview}
+
+Our focus in this course is on mechanics, planning, and control for robot mechanisms, such as robotic arms.
+Basically, a mechanism is constructed by connecting rigid bodies, called \textbf{links}, together by means of \textbf{joints}, so that relative motion between adjacent links become feasible.
+\textbf{Actuation} of the joints then causes the robot to move and exert forces in desired ways.
+
+\end{frame}
+
+\begin{frame}
+
+    \begin{columns}[T]
+        % --- Column 1: Text ---
+        \begin{column}{0.3\textwidth}
+          \footnotesize
+          \begin{itemize}
+            \item Robot mechanisms can be arranged in a serial fashion like the open-chain arm in Figure 1.1
+            \item Or forming closed loops, such as the Stewart-Gough platform.
+            \item Open-chain, all the joints are actuated.
+            \item Closed loops, only a subset of the joints may be actuated.
+          \end{itemize}
+        \end{column}
+
+        % --- Column 2: Figure ---
+        \begin{column}{0.7\textwidth} % 50% of the text width
+            \centering % Center the image within this column
+            \includegraphics[width=\linewidth]{imgs/01/fig1-1.png} 
+            % \captionof{figure}{A description of the image.}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}{Chapter 2: Configuration Space}
+
+  Here we focus on representing the \ul{configuration} of a robot system, a specification of the position of every point of the robot. 
+  The robot consists of a collection of rigid bodies connected by joints.
+  The configuration of a rigid body in the plane can be describe using 3 variables while in the space the rigid body can be described using 6 variables.
+  The number of variables is the number of \ul{degrees of freedom} of the rigid body which is also the dimension of the \ul{configuration space}.
+  The dof of a robot hence the dimension of its configuration space is the sum of the dof of its rigid bodies minus the number of constraints provided by the joints.
+  Knowing the dof of a rigid body and the constraints we can derive \ul{Grübler’s formula} for calculating the dof of general mechanisms.
+
+\end{frame}
+
+\begin{frame}{Chapter 2: Configuration Space}
+
+  Other configuration space concepts of interest include \ul{topology} and its \ul{representation}.
+  Two configuration spaces of the same dimension may have different shapes.
+
+  Example:
+  \begin{itemize}
+    \item two-dimensional plane;
+    \item the two dimensional surface of a unit sphere. 
+    \begin{itemize}
+      \item latitude and longitude, or
+      \item $x, y, z$ subject to the constraint $x² + y² + z² = 1$.
+    \end{itemize}
     
-%     \caption{Three robots side-by-side.}
-%     \label{fig:three_gifs}
-% \end{figure}
+  \end{itemize}
+
+  The former is an \ul{explicitly parametrization} whole the latter is an \ul{implicitly parametrization}. 
+  We will use implicit representations of configurations of rigid bodies.
+  A robot arm is typically equipped with a hand, gripper, or other tools, more generally called and \ul{end-effector}. 
+  The space of positions and orientations of a frame attached to this end-effector is called \ul{task space}. 
+  The \ul{workspace} is the subset of the task space that the end-effector can reach.
+
+\end{frame}
+
+\begin{frame}{Chapter 3: Rigid-Body Motions}
+
+  This chapter addresses the problem of how to describe mathematically the motion of a rigid body moving in three-dimensional physical space.
+  One convenient way is to attach a \ul{reference frame} to the rigid body and to develop a way to quantitatively describe the frame’s position and orientation as it moves.
+  We introduce a $3 \times 3$ matrix representation for describing a frame’s orientation; such a matrix is referred to as a \ul{rotation matrix}.
+
+\end{frame}
+
+\begin{frame}{Chapter 3: Rigid-Body Motions}
+
+The most natural and intuitive way to visualize a rotation matrix is in terms of its \ul{exponential coordinate} representation.
+Given a rotation matrix R, there exists some unit vector $\hat{\omega} \in \mathbb{R}$ and some angle $\theta \in [\theta, \pi]$ such that the rotation matrix can be obtained by rotating the identity frame (that is, the frame corresponding to the identity matrix) about $\hat{\omega}$ by $\theta$.
+The exponential coordinates are defined as $\omega = \hat{\omega}\theta \in \mathbb{R}^3$, which is a three-parameter representation.
+
+\end{frame}
+
+\begin{frame}{Chapter 3: Rigid-Body Motions}
+
+  There are several other well-known coordinate representations, e.g., Euler angles, Cayley–Rodrigues parameters, and unit quaternions, which are discussed in Appendix B.
+
+\end{frame}
+\begin{frame}{Chapter 3: Rigid-Body Motions}
+
+  Another reason for focusing on the exponential description of rotations is that they lead directly to the exponential description of rigid-body motions.
+  The latter can be viewed as a modern geometric interpretation of classical screw theory.
+  Keeping the classical terminology as much as possible, we cover in detail the linear algebraic constructs of screw theory, including the unified description of linear and angular velocities as six-dimensional \ul{twists} (also known as \ul{spatial velocities}), and an analogous description of three-dimensional forces and moments as six-dimensional \ul{wrenches} (also known as \ul{spatial forces}).
+
+\end{frame}
+
+\begin{frame}{Chapter 4: Forward Kinematics}
+
+  For an open chain, the position and orientation of the end-effector are uniquely determined from the joint positions. 
+  The \ul{forward kinematics} problem is to find the position and orientation of the reference frame attached to the end-effector given the set of joint positions.
+  In this chapter we present the \ul{product of exponentials (PoE)} formula describing the forward kinematics of open chains. 
+  As the name implies, the PoE formula is directly derived from the exponential coordinate representation for rigid-body motions.
+  Aside from providing an intuitive and easily visualizable interpretation of the exponential coordinates as the twists of the joint axes, the PoE formula offers other advantages, like eliminating the need for link frames (only the base frame and end-effector frame are required, and these can be chosen arbitrarily).
+
+\end{frame}
+
+\begin{frame}{Chapter 4: Forward Kinematics}
+
+  In Appendix C we also present the \ul{Denavit-Hartenberg (D-H)} representation for forward kinematics.
+  The D-H representation uses fewer parameters but requires that reference frames be attached to each link following special rules of assignment, which can be cumbersome.
+  Details of the transformation from the D-H to the PoE representation are also provided in Appendix C.
+
+\end{frame}
+
+\begin{frame}{Chapter 5: Velocity Kinematics and Statics}
+
+  Velocity kinematics refers to the relationship between the joint linear and angular velocities and those of the end-effector frame. 
+  Central to velocity kinematics is the \ul{Jacobian} of the forward kinematics. 
+  By multiplying the vector of joint-velocity rates by this configuration-dependent matrix, the twist of the end-effector frame can be obtained for any given robot configuration. 
+  \ul{Kinematic singularities}, which are configurations in which the end-effector frame loses the ability to move or rotate in one or more directions, correspond to those configurations at which the Jacobian matrix fails to have maximal rank.
+  The \ul{manipulability ellipsoid}, whose shape indicates the ease with which the robot can move in various directions, is also derived from the Jacobian.
+
+\end{frame}
+
+\begin{frame}{Chapter 5: Velocity Kinematics and Statics}
+
+  Finally, the Jacobian is also central to static force analysis. In static equilibrium settings, the Jacobian is used to determine what forces and torques need to be exerted at the joints in order for the end-effector to apply a desired wrench.
+  The definition of the Jacobian depends on the representation of the end-effector velocity, and our preferred representation of the end-effector velocity is as a six-dimensional twist.
+  We touch briefly on other representations of the end-effector velocity and their corresponding Jacobians.
+
+\end{frame}
+
+\begin{frame}{Chapter 6: Inverse Kinematics}
+
+  The \ul{inverse kinematics} problem is to determine the set of joint positions that achieves a desired end-effector configuration. 
+  For open-chain robots, the inverse kinematics is in general more involved than the forward kinematics: for a given set of joint positions there usually exists a unique end-effector position and orientation 
+  But, for a particular end-effector position and orientation, there may exist multiple solutions to the joint positions, or no solution at all.
+
+\end{frame}
+
+\begin{frame}{Chapter 6: Inverse Kinematics}
+
+  In this chapter we first examine a popular class of six-dof open-chain structures whose inverse kinematics admits a closed-form analytic solution.
+  Iterative numerical algorithms are then derived for solving the inverse kinematics of general open chains by taking advantage of the inverse of the Jacobian.
+  If the open-chain robot is \ul{kinematically redundant}, meaning that it has more joints than the dimension of the task space, then we use the pseudoinverse of the Jacobian.
+
+\end{frame}
+
+\begin{frame}{Chapter 9: Trajectory Generation}
+
+  What sets a robot apart from an automated machine is that it should be easily reprogrammable for different tasks. 
+  Different tasks require different motions, and it would be unreasonable to expect the user to specify the entire time-history of each joint for every task; clearly it would be desirable for the robot’s control computer to “fill in the details” from a small set of task input data.
+  This chapter is concerned with the automatic generation of joint trajectories from this set of task input data.
+  Formally, a trajectory consists of a \ul{path}, which is a purely geometric description of the sequence of configurations achieved by a robot, and a \ul{time scaling}, which specifies the times at which those configurations are reached.
+
+\end{frame}
+
+\begin{frame}{Chapter 9: Trajectory Generation}
+
+  Often the input task data is given in the form of an ordered set of joint values, called control points, together with a corresponding set of control times.
+  On the basis of this data the trajectory generation algorithm produces a trajectory for each joint which satisfies various user-supplied conditions. 
+  In this chapter we focus on three cases: 
+  \begin{enumerate}[i]
+    \item point-to-point straight-line trajectories in both joint space and task space;
+    \item smooth trajectories passing through a sequence of timed “via points”; and
+    \item time-optimal trajectories along specified paths, subject to the robot’s dynamics and actuator limits. Finding paths that avoid collisions is the subject of the next chapter on motion planning.
+  \end{enumerate}
+  
+\end{frame}
+
+\begin{frame}{Chapter 10: Motion Planning}
+
+This chapter addresses the problem of finding a collision-free motion for a robot through a cluttered workspace, while avoiding joint limits, actuator limits, and other physical constraints imposed on the robot.
+The path planning problem is a subproblem of the general motion planning problem that is concerned with finding a collision-free path between a start and goal configuration, usually without regard to the dynamics, the duration of the motion, or other constraints on the motion or control inputs.
+There is no single planner applicable to all motion planning problems. In this chapter we consider three basic approaches: grid-based methods, sampling methods, and methods based on virtual potential fields.
+  
+\end{frame}
+
+\begin{frame}{Chapter 11: Robot Control}
+
+A robot arm can exhibit a number of different behaviors depending on the task and its environment. 
+It can act as a source of programmed motions for tasks such as moving an object from one place to another, or tracing a trajectory for manufacturing applications.
+It can act as a source of forces, for example when grinding or polishing a workpiece.
+In tasks such as writing on a chalkboard, it must control forces in some directions (the force pressing the chalk against the board) and motions in other directions (the motion in the plane of the board).
+In certain applications, e.g., haptic displays, we may want the robot to act like a programmable spring, damper, or mass, by controlling its position, velocity, or acceleration in response to forces applied to it.
+
+\end{frame}
+
+\begin{frame}{Chapter 11: Robot Control}
+
+In each of these cases, it is the job of the robot controller to convert the task specification to forces and torques at the actuators. 
+Control strategies to achieve the behaviors described above are known as \ul{motion} (or \ul{position}) \ul{control}, \ul{force control}, \ul{hybrid motion-force control}, and \ul{impedance control}.
+Which of these behaviors is appropriate depends on both the task and the environment.
+For example, a force-control goal makes sense when the end-effector is in contact with something, but not when it is moving in free space.
+
+\end{frame}
+
+\begin{frame}{Chapter 11: Robot Control}
+
+Most practical control schemes compensate for these uncertainties by using \ul{feedback control}.
+After examining the performance limits of feedback control without a dynamic model of the robot, we study motion control algorithms, such as \ul{computed torque control}, that combine approximate dynamic modeling with feedback control. 
+
+\end{frame}
+
+\section*{} % <--- Use an unnumbered section
+\begin{frame}{Questions?}
+
+Next:
+\begin{itemize}
+  \item 02 - Ch2 Intro, 2.1, 2.2
+\end{itemize}
+
 \end{frame}
 
 \end{document}
