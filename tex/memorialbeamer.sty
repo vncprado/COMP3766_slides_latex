@@ -1,0 +1,50 @@
+% Minimal Memorial beamer theme: only red/grey/black/white
+% Keeps styles minimal to produce a clean title page
+
+\mode<presentation>
+
+% Colors
+\definecolor{MemorialRed}{RGB}{134,38,51}
+\definecolor{MemorialGrey}{RGB}{99,102,106}
+\definecolor{MemorialWhite}{RGB}{255,255,255}
+\definecolor{MemorialBlack}{RGB}{35,31,32}
+
+% Palette
+\setbeamercolor{palette primary}{bg=MemorialRed, fg=MemorialWhite}
+\setbeamercolor{palette secondary}{bg=MemorialGrey, fg=MemorialWhite}
+\setbeamercolor{structure}{fg=MemorialRed}
+\setbeamercolor{title}{fg=MemorialWhite, bg=MemorialRed}
+\setbeamercolor{frametitle}{fg=MemorialWhite, bg=MemorialRed}
+\setbeamercolor{normal text}{fg=MemorialBlack, bg=MemorialWhite}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% No headline (keeps title page uncluttered)
+\setbeamertemplate{headline}{}
+
+% Simple footline: muted background, left author, right page numbers
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=1\paperwidth, ht=0.45cm, dp=0.12cm]{palette secondary}
+    \hspace{1em}\usebeamerfont{author in head/foot}\insertshortauthor\hfill\insertframenumber/\inserttotalframenumber\hspace{1em}
+  \end{beamercolorbox}
+}
+
+% Clean title page
+\setbeamertemplate{title page}{%
+  \begin{centering}
+    \vspace{1cm}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par\vskip0.5em
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{frametitle}\insertsubtitle}\par\vskip1.2em
+    {\usebeamerfont{author}\insertauthor}\par\vskip0.5em
+    {\usebeamerfont{date}\insertdate}\par\vfill
+  \end{centering}
+}
+
+\mode<all>
+
