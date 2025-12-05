@@ -1,0 +1,73 @@
+% Beamer presentation with Memorial University theme
+\documentclass{beamer}
+
+% Use custom Memorial University theme (explicit input to ensure findability)
+\input{tex/memorialbeamer.sty}
+
+% Define email
+\def\email{vpradodafons@mun.ca}
+
+\title{Sample Beamer Slide}
+% short author (used in footer) set to email
+\author{Vinicius Prado da Fonseca, Ph.D. \\ vpradodafons@mun.ca}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+
+  \begin{columns}[T]
+        \begin{column}{\textwidth}
+          \tableofcontents
+        \end{column}
+  \end{columns}
+
+\end{frame}
+
+\section{First Section}
+\begin{frame}{Example}
+
+  This is a simple Beamer slide for testing `pdflatex`.
+
+\end{frame}
+
+\section{Second Section}
+\begin{frame}
+
+    \begin{columns}[T]
+        % --- Column 1: Text ---
+        \begin{column}{0.3\textwidth}
+          \footnotesize
+          \begin{itemize}
+            \item Robot mechanisms can be arranged in a serial fashion like the open-chain arm in Figure 1.1
+            \item Or forming closed loops, such as the Stewart-Gough platform.
+            \item Open-chain, all the joints are actuated.
+            \item Closed loops, only a subset of the joints may be actuated.
+          \end{itemize}
+        \end{column}
+
+        % --- Column 2: Figure ---
+        \begin{column}{0.7\textwidth} % 50% of the text width
+            \centering % Center the image within this column
+            \includegraphics[width=\linewidth]{imgs/01/fig1-1.png} 
+            % \captionof{figure}{A description of the image.}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\section*{} % <--- Use an unnumbered section
+\begin{frame}{Questions?}
+
+  Next:
+  \begin{itemize}
+    \item 02 - Ch2 Intro, 2.1, 2.2
+  \end{itemize}
+
+\end{frame}
+
+\end{document}

@@ -347,45 +347,45 @@ The exponential coordinates are defined as $\omega = \hat{\omega}\theta \in \mat
 
 \begin{frame}{Chapter 10: Motion Planning}
 
-This chapter addresses the problem of finding a collision-free motion for a robot through a cluttered workspace, while avoiding joint limits, actuator limits, and other physical constraints imposed on the robot.
-The path planning problem is a subproblem of the general motion planning problem that is concerned with finding a collision-free path between a start and goal configuration, usually without regard to the dynamics, the duration of the motion, or other constraints on the motion or control inputs.
-There is no single planner applicable to all motion planning problems. In this chapter we consider three basic approaches: grid-based methods, sampling methods, and methods based on virtual potential fields.
+  This chapter addresses the problem of finding a collision-free motion for a robot through a cluttered workspace, while avoiding joint limits, actuator limits, and other physical constraints imposed on the robot.
+  The path planning problem is a subproblem of the general motion planning problem that is concerned with finding a collision-free path between a start and goal configuration, usually without regard to the dynamics, the duration of the motion, or other constraints on the motion or control inputs.
+  There is no single planner applicable to all motion planning problems. In this chapter we consider three basic approaches: grid-based methods, sampling methods, and methods based on virtual potential fields.
   
 \end{frame}
 
 \begin{frame}{Chapter 11: Robot Control}
 
-A robot arm can exhibit a number of different behaviors depending on the task and its environment. 
-It can act as a source of programmed motions for tasks such as moving an object from one place to another, or tracing a trajectory for manufacturing applications.
-It can act as a source of forces, for example when grinding or polishing a workpiece.
-In tasks such as writing on a chalkboard, it must control forces in some directions (the force pressing the chalk against the board) and motions in other directions (the motion in the plane of the board).
-In certain applications, e.g., haptic displays, we may want the robot to act like a programmable spring, damper, or mass, by controlling its position, velocity, or acceleration in response to forces applied to it.
+  A robot arm can exhibit a number of different behaviors depending on the task and its environment. 
+  It can act as a source of programmed motions for tasks such as moving an object from one place to another, or tracing a trajectory for manufacturing applications.
+  It can act as a source of forces, for example when grinding or polishing a workpiece.
+  In tasks such as writing on a chalkboard, it must control forces in some directions (the force pressing the chalk against the board) and motions in other directions (the motion in the plane of the board).
+  In certain applications, e.g., haptic displays, we may want the robot to act like a programmable spring, damper, or mass, by controlling its position, velocity, or acceleration in response to forces applied to it.
 
 \end{frame}
 
 \begin{frame}{Chapter 11: Robot Control}
 
-In each of these cases, it is the job of the robot controller to convert the task specification to forces and torques at the actuators. 
-Control strategies to achieve the behaviors described above are known as \ul{motion} (or \ul{position}) \ul{control}, \ul{force control}, \ul{hybrid motion-force control}, and \ul{impedance control}.
-Which of these behaviors is appropriate depends on both the task and the environment.
-For example, a force-control goal makes sense when the end-effector is in contact with something, but not when it is moving in free space.
+  In each of these cases, it is the job of the robot controller to convert the task specification to forces and torques at the actuators. 
+  Control strategies to achieve the behaviors described above are known as \ul{motion} (or \ul{position}) \ul{control}, \ul{force control}, \ul{hybrid motion-force control}, and \ul{impedance control}.
+  Which of these behaviors is appropriate depends on both the task and the environment.
+  For example, a force-control goal makes sense when the end-effector is in contact with something, but not when it is moving in free space.
 
 \end{frame}
 
 \begin{frame}{Chapter 11: Robot Control}
 
-Most practical control schemes compensate for these uncertainties by using \ul{feedback control}.
-After examining the performance limits of feedback control without a dynamic model of the robot, we study motion control algorithms, such as \ul{computed torque control}, that combine approximate dynamic modeling with feedback control. 
+  Most practical control schemes compensate for these uncertainties by using \ul{feedback control}.
+  After examining the performance limits of feedback control without a dynamic model of the robot, we study motion control algorithms, such as \ul{computed torque control}, that combine approximate dynamic modeling with feedback control. 
 
 \end{frame}
 
 \section*{} % <--- Use an unnumbered section
 \begin{frame}{Questions?}
 
-Next:
-\begin{itemize}
-  \item 02 - Ch2 Intro, 2.1, 2.2
-\end{itemize}
+  Next:
+  \begin{itemize}
+    \item 02 - Ch2 Intro, 2.1, 2.2
+  \end{itemize}
 
 \end{frame}
 

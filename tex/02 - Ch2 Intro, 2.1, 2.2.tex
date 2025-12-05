@@ -1,0 +1,72 @@
+% Beamer presentation with Memorial University theme
+\documentclass{beamer}
+% Use custom Memorial University theme (explicit input to ensure findability)
+\input{tex/memorialbeamer.sty}
+
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+
+% Define email
+\def\email{vpradodafons@mun.ca}
+
+\title{02 - Ch2 Intro, 2.1, 2.2}
+% short author (used in footer) set to email
+\author{Vinicius Prado da Fonseca, Ph.D. \\ vpradodafons@mun.ca}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+
+  \titlepage
+
+\end{frame}
+
+\begin{frame}{Outline}
+
+  \begin{columns}[T]
+        \begin{column}{\textwidth}
+          \tableofcontents
+        \end{column}
+  \end{columns}
+
+\end{frame}
+
+\section{Ch 2 Intro}
+
+\begin{frame}
+
+    % \begin{columns}[T]
+        % --- Column 1: Text ---
+        % \begin{column}{0.4\textwidth}
+          % \footnotesize
+              A robot is mechanically constructed by connecting \textbf{rigid bodies}, called \textbf{links}, together by means of \textbf{joints}, so that relative motion between adjacent links becomes possible.
+              \textbf{Actuation} of the joints, typically by electric motors, then causes the robot to move and exert forces in desired ways.
+        % \end{column}
+
+        % --- Column 2: Figure ---
+        % \begin{column}{0.6\textwidth}
+            \centering % Center the image within this column
+            \includegraphics[height=0.6\paperheight]{imgs/02/fig2-14.png} 
+            % \captionof{figure}{A description of the image.}
+        % \end{column}
+    % \end{columns}
+
+\end{frame}
+
+
+
+\section*{} % Final slide use an unnumbered section
+\begin{frame}{Questions?}
+
+  Next:
+  \begin{itemize}
+    \item 02 - Ch2 Intro, 2.1, 2.2
+  \end{itemize}
+
+\end{frame}
+
+\end{document}
