@@ -25,25 +25,41 @@
 % Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
 
-% No headline (keeps title page uncluttered)
-\setbeamertemplate{headline}{}
-
-% Simple footline: muted background, left author, right page numbers
-\setbeamertemplate{footline}{%
-  \begin{beamercolorbox}[wd=1\paperwidth, ht=0.45cm, dp=0.12cm]{palette secondary}
-    \hspace{1em}\usebeamerfont{author in head/foot}\insertshortauthor\hfill\insertframenumber/\inserttotalframenumber\hspace{1em}
+% Headline with section name on the right
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=1\paperwidth, ht=0.45cm, dp=0pt]{palette secondary}
+    \vbox to 0.45cm{\vfil%
+      \hbox to 1\paperwidth{%
+        \hspace{1em}\hfill\usebeamerfont{section in head/foot}\insertsectionhead\hspace{1em}%
+      }%
+      \vfil}
   \end{beamercolorbox}
 }
 
-% Clean title page
+% Simple footline: muted background, left author, right page numbers
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=1\paperwidth, ht=0.45cm, dp=0pt]{palette secondary}
+    \vbox to 0.45cm{\vfil%
+      \hbox to 1\paperwidth{%
+        \hspace{1em}\usebeamerfont{author in head/foot}\insertshortauthor\hfill\insertframenumber/\inserttotalframenumber\hspace{1em}%
+      }%
+      \vfil}
+  \end{beamercolorbox}
+}
+
+% Boxed title page (restores a visually framed title like the beamer default)
 \setbeamertemplate{title page}{%
-  \begin{centering}
+  \begin{center}
     \vspace{1cm}
-    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par\vskip0.5em
-    {\usebeamerfont{subtitle}\usebeamercolor[fg]{frametitle}\insertsubtitle}\par\vskip1.2em
+    \begin{beamercolorbox}[sep=1.25em,center,rounded=true,shadow=true]{title}
+      {\usebeamerfont{title}\inserttitle}\par\vskip0.5em
+      {\usebeamerfont{subtitle}\insertsubtitle}
+    \end{beamercolorbox}
+    \vskip1.2em
     {\usebeamerfont{author}\insertauthor}\par\vskip0.5em
-    {\usebeamerfont{date}\insertdate}\par\vfill
-  \end{centering}
+    {\usebeamerfont{date}\insertdate}
+    \vfill
+  \end{center}
 }
 
 \mode<all>

@@ -1,0 +1,191 @@
+% Beamer presentation with Memorial University theme
+\documentclass{beamer}
+% Use custom Memorial University theme (explicit input to ensure findability)
+\input{tex/memorialbeamer.sty}
+
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+
+% Define email
+\def\email{vpradodafons@mun.ca}
+
+\title{01 - Outline, Ch1 Preview}
+% short author (used in footer) set to email
+\author{Vinicius Prado da Fonseca, Ph.D. \\ vpradodafons@mun.ca}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % \begin{itemize}
+  %   \item Introduction
+  %   \item Example slide
+  %   \item Conclusion
+  % \end{itemize}
+\end{frame}
+
+\section{Course overview}
+\begin{frame}{Course objectives}
+  \begin{itemize}
+    \item The primary objective: introduction to the mathematical formulation and practical aspects of robotic manipulators.
+    \item It will present kinematics, dynamics, control, and programming vital to effectively using/designing  robotic arms.
+    \item Topics covered:
+    \begin{itemize}
+      \item Configuration space;
+      \item Rigid-body motions;
+      \item Forward and inverse kinematics;
+      \item Trajectory generation;
+      \item Motion planning;
+      \item Manipulator control.
+    \end{itemize}
+    \item A complete yet straightforward robotic manipulator model will be developed to demonstrate these concepts using high-level languages and frameworks.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Course details}
+  \begin{itemize}
+    \item Instructor: Dr. Vinicius Prado da Fonseca
+    \begin{itemize}
+      \item E-mail: \textbf{vpradodafons@online.mun.ca (Brightspace email) include [COMP3766] in the subject line};
+        \begin{itemize}
+          \item Send email within Brightspace. Does not receive emails from outside brightspace;
+          \item Use ONLY brightspace email.
+        \end{itemize}
+    \item Office: EN-2012;
+    \item Office Hours: Friday after class or by appointment.
+    \end{itemize}
+    \item Course Prerequisites: COMP2001, COMP2002, MATH2000, MATH2050, STAT2500 or STAT2550
+    \item Lectures (\textbf{EN 1054, M-W-F 14:00 - 14:50}) and course notes on Brightspace;
+    \begin{itemize}
+      \item Lectures are recorded on Online Rooms (Bongo).
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Course details (cont.)}
+  \begin{itemize}
+    \item Labs
+    \begin{itemize}
+      \item Lecture room, lecture time, some Fridays;
+      \item Quiz on Brightspace;
+      \item Course repository: \url{https://github.com/vncprado/COMP3766}.
+      \item More details next slides.
+    \end{itemize}
+    \item Textbook
+      \begin{itemize}
+        \item Modern Robotics Mechanics, Planning, And Control, Kevin M. Lynch and Frank C. Park, 2019 (Cambridge University Press);
+        \item Book website: \url{https://hades.mech.northwestern.edu/index.php/Modern_Robotics}
+        \item Online notes and slides will also be available.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation}
+  \begin{itemize}
+    \item The final grade in the course will be determined as follows:
+    \begin{itemize}
+      \item   Quizzes (2) - 25\%;
+      \item   Lab exercises (4) - 20\%;
+      \item   Assignments (\hl{5 or 6}) - 30\%;
+      \item   Final Project - 25\%.
+    \end{itemize}
+    \item Course outline on Brightspace:
+      \begin{itemize}
+        \item Evaluation, lecture dates, lab schedule, assignment deadlines and textbook units.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Assignments}
+  \begin{itemize}
+    \item Assignments (\hl{5 or 6}) may have written and/or programming portions
+    \item Submit written portions by hand in a scanned document or annotated PDF.
+    \item Programming portions will be mostly in Python. Use the provided files as a template for your code.  
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Labs}
+  \begin{itemize}
+    \item Labs (4) will be \textbf{IN PERSON}
+    \begin{itemize}
+      \item 
+      \item Lecture room, Lecture time, some Fridays, see schedule on Brightspace;
+      \item Repository with ROS workspace will be provided;
+      \item Bring laptop with \textbf{Docker} and \textbf{VSCode} installed;
+      \item D2L Quiz will be open until 23:59 on lab day.
+    \end{itemize}
+    \item NO EXTENSIONS!
+    \item You must do the \ul{\textbf{pre-lab section}} before arriving at the lab time.
+    \item After completing the lab you must answer the \textbf{quiz on brightspace}.
+    \item On Brightspace you will find:
+    \begin{itemize}
+      \item Lab schedule; 
+      \item Lab manual;
+      \item Support files;
+      \item Lab quiz.
+    \end{itemize}
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Final Project}
+  \begin{itemize}
+    \item Repository (\hl{INCLUDE REPO LINK HERE})
+    \item Final weeks starting after second quiz.
+    \item Deadline last day of classes.
+  \end{itemize}
+\end{frame}
+
+\section{Ch1 Preview}
+\begin{frame}
+  Robotics is a relatively young discipline with highly ambitious goals, the ultimate one being the creation of machines that can behave and think like humans.  
+
+  \begin{figure}[h]
+      \centering
+      % TODO: UPDATE THIS LINK TO THE REPO GIFS
+      \href{https://www.google.com}{
+          \includegraphics[width=0.5\textwidth]{imgs/01/atlas-yellow.jpg}
+      }
+      \caption{Boston Dynamics Atlas Robot.}
+      \label{fig:atlas-clickable}
+  \end{figure}
+
+%   \begin{figure}[htb!]
+%     \centering
+%     % Define a fixed width for all three subfigures.
+%     % In this case, each image is slightly less than 1/3 of the text width 
+%     % to account for spacing between them.
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{imgs/01/spot.gif} 
+%         \caption{Spot robot.}
+%         \label{fig:gif1}
+%     \end{subfigure}% % <--- Crucial to prevent extra space (like a newline)
+%     \hfill% % <--- Adds flexible horizontal space between subfigures
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{imgs/01/atlas_fail.gif}
+%         \caption{Atlas falling while jumping.}
+%         \label{fig:gif2}
+%     \end{subfigure}%
+%     \hfill%
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{imgs/01/atlas_nofail.gif}
+%         \caption{Atlas jumping successfully.}
+%         \label{fig:gif3}
+%     \end{subfigure}
+    
+%     \caption{Three robots side-by-side.}
+%     \label{fig:three_gifs}
+% \end{figure}
+\end{frame}
+
+\end{document}
