@@ -1,5 +1,5 @@
 % Beamer presentation with Memorial University theme
-\documentclass{beamer}
+\documentclass[t]{beamer}
 % Use custom Memorial University theme (explicit input to ensure findability)
 \input{tex/memorialbeamer.sty}
 
@@ -39,32 +39,220 @@
 
 \begin{frame}
 
-    % \begin{columns}[T]
-        % --- Column 1: Text ---
-        % \begin{column}{0.4\textwidth}
-          % \footnotesize
-              A robot is mechanically constructed by connecting \textbf{rigid bodies}, called \textbf{links}, together by means of \textbf{joints}, so that relative motion between adjacent links becomes possible.
-              \textbf{Actuation} of the joints, typically by electric motors, then causes the robot to move and exert forces in desired ways.
-        % \end{column}
+  A robot is mechanically constructed by connecting \textbf{rigid bodies}, called \textbf{links}, together by means of \textbf{joints}, so that relative motion between adjacent links becomes possible.
+  \textbf{Actuation} of the joints, typically by electric motors, then causes the robot to move and exert forces in desired ways.
 
-        % --- Column 2: Figure ---
-        % \begin{column}{0.6\textwidth}
-            \centering % Center the image within this column
-            \includegraphics[height=0.6\paperheight]{imgs/02/fig2-14.png} 
-            % \captionof{figure}{A description of the image.}
-        % \end{column}
-    % \end{columns}
+  \begin{center}
+    \includegraphics[height=0.6\paperheight]{imgs/02/fig2-14.png}     
+  \end{center}
+
+\end{frame}
+
+\section{Where is the robot?}
+\begin{frame}{Where is the robot?}
+
+  The answer is given by the robot’s \textbf{configuration}: a specification of the positions of all points of the robot.
+  Since the robot’s links are rigid and of a known shape, only a few numbers are needed to represent its configuration.
+  Imagine a soft material like a pillow. You need to know where are all the points of an object to describe it.
+  With rigid mechanisms only a few numbers are needed to represent its configuration.
+  What is the the configuration of a door? (Fig 2.1 (a)).
+
+\end{frame}
+
+\begin{frame}
+
+  The configuration of a point on a plane can be described by two coordinates, $(x, y)$.
+  The configuration of a coin lying heads up on a flat table can be described by three coordinates:
+  \begin{itemize}
+    \item two coordinates $(x, y)$ that specify the location of a particular point on the coin, and
+    \item one coordinate $(\theta)$ that specifies the coin’s orientation.
+  \end{itemize}
 
 \end{frame}
 
 
+\begin{frame}
+  The coordinates below all take values over a continuous range of real numbers.
+
+  \begin{center}
+    \includegraphics[height=0.6\paperheight]{imgs/02/fig2-1.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The number of \textbf{degrees of freedom (dof)} of a robot is the smallest number of real-valued coordinates needed to represent its configuration.
+  
+  In the example above,
+
+\begin{itemize}
+  \item the door has one degree of freedom, and
+  \item the coin lying heads up on a table has three degrees of freedom.
+\end{itemize}
+
+Even if the coin could lie either heads up or tails up, its configuration space still would have only three degrees of freedom;
+
+a fourth variable, representing which side of the coin faces up, takes values in the discrete set {heads,tails}, and not over a continuous range of real values like the other three coordinates.
+
+\end{frame}
+
+\begin{frame}[c]
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{imgs/02/def2-1.png}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  In this chapter we study the C-space and degrees of freedom of general robots.
+  Since our robots are constructed from rigid links, we examine first the degrees of freedom of a single rigid body, and then the degrees of freedom of general multi-link robots.
+  Next we study the shape (or topology) and geometry of C-spaces and their mathematical representation.
+  The chapter concludes with a discussion of the C-space of a robot’s end-effector, its task space.
+  In the following chapter we study in more detail the mathematical representation of the C-space of a single rigid body.
+
+\end{frame}
+
+\section{2.1. Degrees of Freedom of a Rigid Body}
+\begin{frame}{2.1. Degrees of Freedom of a Rigid Body}
+
+  \begin{columns}[T]
+    % --- Column 1: Text ---
+    \begin{column}{0.4\textwidth}
+      Continuing with the example of the coin lying on the table, choose three points A, B, and C on the coin. Once a coordinate frame $\hat{x}-\hat{y}$ is attached to the plane, the positions of these points in the plane are written $(x_A, y_A)$, $(x_B, y_B)$, and $(x_C , y_C )$.
+    \end{column}
+
+    % --- Column 2: Figure ---
+    \begin{column}{0.6\textwidth} % 50% of the text width
+        \centering % Center the image within this column
+        \includegraphics[width=0.6\textwidth]{imgs/02/fig2-2a.png} 
+        % \captionof{figure}{A description of the image.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+
+  But, according to the definition of a rigid body, the distance between point A and point B, denoted $d(A, B)$, is always constant regardless of where the coin is.
+Similarly, the distances $d(B, C)$ and $d(A, C)$ must be constant.
+
+The following equality constraints on the coordinates $(x_A, y_A)$, $(x_B, y_B)$, and $(x_C , y_C)$ must therefore always be satisfied:
+
+\begin{align*}
+  d(A, B) &= \sqrt{(x_A - x_B)^2 + (y_A - y_B)^2} = d_{AB}, \\
+  d(B, C) &= \sqrt{(x_B - x_C)^2 + (y_B - y_C)^2} = d_{BC}, \\
+  d(A, C) &= \sqrt{(x_A - x_C)^2 + (y_A - y_C)^2} = d_{AC}.
+\end{align*}
+  
+\end{frame}
+
+\begin{frame}
+
+To determine the number of degrees of freedom of the coin on the table,
+
+\begin{enumerate}
+  \item Choose the position of point A in the plane (Figure 2.2(b)).
+  \item We may choose it to be anything we want, so we have two degrees of freedom to specify, namely $(x_A, y_A)$.
+  \item Once $(x_A, y_A)$ is specified, the constraint $d(A, B) = d_{AB}$ restricts the choice of $(x_B, y_B)$;
+  \item We must choose those points on the circle of radius $d_{AB}$ centered at A.
+  \item A point on this circle can be specified by a single parameter, e.g., the angle specifying the location of B on the circle centered at A.
+  \item Let’s call this angle $\varphi_{AB}$ and define it to be the angle that the vector $\overrightarrow{AB}$ makes with the $\hat{x}$-axis.
+
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+  Once we have chosen the location of point B, there are only two possible locations for C:
+  \begin{itemize}
+    \item  at the intersections of the circle of radius $d_{AC}$ centered at A
+    \item and the circle of radius $d_{BC}$ centered at B (Figure 2.2(b)). 
+  \end{itemize}
+  These two solutions correspond to heads or tails.
+  In other words, once we have placed A and B and chosen heads or tails, the two constraints $d(A, C) = d_{AC}$ and $d(B, C) = d_{BC}$ eliminate the two apparent freedoms provided by (xC , yC ), and the location of C is fixed.
+  The coin has exactly three degrees of freedom in the plane, which can be specified by $(x_A, y_A, \varphi_{AB})$.
+
+\end{frame}
+
+\begin{frame}
+
+  Suppose that we choose to specify the position of an additional point D on the coin.
+  This introduces three additional constraints: $d(A, D) = d_{AD}$, $d(B, D) = d_{BD}$, and $d(C, D) = d_{CD}$.
+  One of these constraints is redundant, i.e., it provides no new information; only two of the three constraints are independent. 
+
+\end{frame}
+
+\begin{frame}
+  We have been applying the following general rule for determining the number of degrees of freedom of a system:
+
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/02/eq2-1.png} 
+  \end{center}
+
+  This rule can also be expressed in terms of the number of variables and independent equations that describe the system:
+
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/02/eq2-2.png} 
+  \end{center}  
+\end{frame}
+
+\begin{frame}
+  
+  This general rule can also be used to determine the number of freedoms of a rigid body in three dimensions.
+  The coordinates for the three points A, B, and C are now given by $(x_A, y_A, z_A)$, $(x_B, y_B, z_B)$, and $(x_C , y_C , z_C )$, respectively.
+
+  \begin{itemize}
+    \item Point A can be placed freely (three degrees of freedom).
+    \item The location of point B is subject to the constraint $d(A, B) = d_{AB}$, meaning it must lie on the sphere of radius $d_{AB}$ centered at A.
+    \item Thus we have $3-1 = 2$ freedoms to specify, which can be expressed as the latitude and longitude for the point on the sphere.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  
+  \begin{itemize}
+    \item Finally, the location of point C must lie at the intersection of spheres centered at A and B of radius $d_{AC}$ and $d_{BC}$, respectively.
+    \item In the general case the intersection of two spheres is a circle, and the location of point C can be described by an angle that parametrizes this circle.
+    \item Point C therefore adds $3-2 = 1$ freedom.
+    \item Once the position of point C is chosen, the coin is fixed in space.
+  \end{itemize}
+
+  In summary, a rigid body in three-dimensional space has six freedoms, which
+can be described by the three coordinates parametrizing point A, the two angles
+parametrizing point B, and one angle parametrizing point C, provided A, B,
+and C are noncollinear. Other representations for the configuration of a rigid
+body are discussed in Chapter 3.
+\end{frame}
+
+
+\begin{frame}
+
+We have just established that a rigid body moving in three-dimensional
+space, which we call a spatial rigid body, has six degrees of freedom. Similarly,
+a rigid body moving in a two-dimensional plane, which we henceforth call a
+planar rigid body, has three degrees of freedom. This latter result can also
+be obtained by considering the planar rigid body to be a spatial rigid body with
+six degrees of freedom but with the three independent constraints $z_A = z_B =
+z_C = 0$.
+Since our robots consist of rigid bodies, Equation (2.1) can be expressed as
+follows:
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/02/eq2-3.png} 
+  \end{center}  
+Equation (2.3) forms the basis for determining the degrees of freedom of general
+robots, which is the topic of the next section.
+\end{frame}
 
 \section*{} % Final slide use an unnumbered section
 \begin{frame}{Questions?}
 
   Next:
   \begin{itemize}
-    \item 02 - Ch2 Intro, 2.1, 2.2
+    \item 03
   \end{itemize}
 
 \end{frame}
