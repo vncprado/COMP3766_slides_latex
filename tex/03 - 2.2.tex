@@ -36,7 +36,260 @@
 \end{frame}
 
 \section{2.2 Degrees of Freedom of a Robot}
+\begin{frame}{2.2 Degrees of Freedom of a Robot}
 
+  \begin{columns}[c]
+    % --- Column left
+    \begin{column}{0.6\textwidth}
+      Consider once again the door example of Figure 2.1(a)
+      \begin{itemize}
+        \item It consists of a single rigid body connected to a wall by a hinge joint.
+        \item It has only one degree of freedom, conveniently represented by the hinge joint angle $\theta$.
+        \item Without the hinge joint, the door would have six degrees of freedom.
+        \item By connecting the door to the wall via the hinge joint, five independent constraints are imposed, one independent coordinate ($\theta$). 
+        \item The door's C-space is represented by some range in the interval $[0, 2\pi)$ over which $\theta$ is allowed to vary.    
+      \end{itemize}
+     \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.4\textwidth} % 50% of the text width
+        \centering % Center the image within this column
+        \includegraphics[width=0.6\textwidth]{imgs/03/fig2-1a.png} 
+        % \captionof{figure}{A description of the image.}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{columns}[c]
+    % --- Column 1: Text ---
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item Alternatively, the door can be viewed from above and regarded as a planar body, which has three degrees of freedom.
+        \item The hinge joint then imposes two independent constraints, again leaving only one independent coordinate ($\theta$).
+      \end{itemize}
+      In both cases the joints constrain the motion of the rigid body, thus reducing the overall degrees of freedom.
+      In this section we derive precisely such a formula, called Grübler's formula, for determining the number of degrees of freedom of planar and spatial robots.
+     \end{column}
+
+    % --- Column 2: Figure ---
+    \begin{column}{0.4\textwidth} % 50% of the text width
+        \centering % Center the image within this column
+        \includegraphics[width=0.6\textwidth]{imgs/03/fig2-1a.png} 
+        % \captionof{figure}{A description of the image.}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\section{2.2.1 Robot Joints}
+\begin{frame}{2.2.1 Robot Joints}
+
+  Figure 2.3 illustrates the basic joints found in typical robots.
+  Every joint connects exactly two links; joints that simultaneously connect three or more links are not allowed. 
+
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{imgs/03/fig2-3.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The revolute joint (R), also called a hinge joint, allows rotational motion about the joint axis.
+  
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3R.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The prismatic joint (P), also called a sliding or linear joint, allows translational (or rectilinear) motion along the direction of the joint axis.
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3P.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The helical joint (H), also called a screw joint, allows simultaneous rotation and translation about a screw axis.
+  Revolute, prismatic, and helical joints all have one degree of freedom. 
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3H.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  Joints can also have multiple degrees of freedom.
+  The cylindrical joint (C) has two degrees of freedom and allows independent translations and rotations about a single fixed joint axis.
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3C.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The universal joint (U) is another two-degreeof-freedom joint that consists of a pair of revolute joints arranged so that their joint axes are orthogonal.
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3U.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The spherical joint (S), also called a ball-and-socket joint, has three degrees of freedom and functions much like our shoulder joint.
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{imgs/03/fig2-3S.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+A joint can be viewed as providing freedoms to allow one rigid body to move relative to another.
+It can also be viewed as providing constraints on the possible motions of the two rigid bodies it connects.
+Generalizing, the number of degrees of freedom of a rigid body (three for planar bodies and six for spatial bodies) minus the number of constraints provided by a joint must equal the number of freedoms provided by that joint.
+
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/03/tab2_1.png} 
+  \end{center}
+
+\end{frame}
+
+\section{2.2.2 Grübler's Formula}
+\begin{frame}{2.2.2 Grübler's Formula}
+
+  The number of degrees of freedom of a mechanism with links and joints can be calculated using Grübler's formula, which is an expression of Equation (2.3).
+  
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/03/prop2-2.png}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  The number of degrees of freedom of a mechanism with links and joints can be calculated using Grübler's formula, which is an expression of Equation (2.3).
+  
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{imgs/03/eq2-4.png} 
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Example 2.4}
+
+  Let us now apply Grübler's formula to several classical planar mechanisms.
+  The k-link planar serial chain of revolute joints in Figure 2.5(a) below.
+  \begin{columns}[T]
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/fig2-5a.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Example 2.4}
+
+  For the planar five-bar linkage of Figure 2.5(b) below.
+  \begin{columns}[T]
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/fig2-5b.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Example 2.3}
+
+  (Four-bar linkage and slider-crank mechanism).
+  The planar fourbar linkage shown in Figure 2.4(a) below consists of four links (one of them ground) arranged in a single closed loop and connected by four revolute joints.
+  \begin{columns}[T]
+
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/fig2-4a.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Example OMX}
+
+  OpenManiplator-X
+
+  \begin{columns}[T]
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/OMX.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Example Lite6}
+
+  UFactory Lite6
+  
+  \begin{columns}[T]
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/lite6.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
 
 \section*{} % Final slide use an unnumbered section
 \begin{frame}{Questions?}
