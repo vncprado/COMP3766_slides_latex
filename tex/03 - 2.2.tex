@@ -291,6 +291,44 @@ Generalizing, the number of degrees of freedom of a rigid body (three for planar
   
 \end{frame}
 
+\begin{frame}{Example 2.6}
+
+  (Redundant constraints and singularities). For the parallelogram linkage of Figure 2.7(a).
+  
+  \begin{columns}[T]
+    % --- Column left ---
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{imgs/03/fig2-7a.png}  
+        \end{center}
+    \end{column}
+
+    % --- Column right ---
+    \begin{column}{0.5\textwidth}
+        $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Example 2.6}
+
+  $dof = m(N-1-J) + \sum\limits_{i=1}^{J}f_i$
+
+  $N = 5$, $J = 6$, and $f_i = 1$ for each joint.
+  From Grübler's formula, the number of degrees of freedom is $3(5 - 1 - 6) + 6 = 0$.
+  A mechanism with zero degrees of freedom is by definition a rigid structure.
+  It is clear from examining the figure, though, that the mechanism can in fact move with one degree of freedom.
+  Indeed, any one of the three parallel links, with its two joints, has no effect on the motion of the mechanism,
+   so we should have calculated $dof = 3(4 - 1 - 4) + 4 = 1$.
+  In other words, the constraints provided by the joints are not independent, as required by Grübler's formula.
+  
+  % \begin{center}
+  %   \includegraphics[width=\textwidth]{imgs/03/fig2-7a.png}  
+  % \end{center}
+  
+\end{frame}
+
 \section*{} % Final slide use an unnumbered section
 \begin{frame}{Questions?}
 
